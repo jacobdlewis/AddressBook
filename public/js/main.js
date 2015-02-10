@@ -97,3 +97,4 @@ $('tbody').on('click', '#removeRow', function(evt){
   var url = "https://myjsaddressbook.firebaseio.com/friends/" + uuid + '.json';
   $.ajax(url, {type: 'DELETE'});
 });
+
