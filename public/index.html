@@ -10,20 +10,19 @@
 <body>
   <h1> My FriendBook </h1>
 
-  <button name="add_a_friend" id="add_a_friend" class="button">Add a Friend</button>
-
     <form class="make_a_friend">
       <label>Enter friend's name:</label>
-      <input type="text", name="friendName" placeholder="Enter a name, foo!", required>
+      <input type="text", name="friendName" id="name" placeholder="Enter a name", required>
       <label>Enter URL of friend's photo:</label>
-      <input type="text", name="photoUrl" placeholder="URL of those Cancun pictures...", required>
+      <input type="text", name="photoUrl" id="photo" placeholder="URL of photo to add", required>
       <label>Enter friend's Twitter handle:</label>
-      <input type="text", name="twitterHandle" placeholder="@examplepal90", required>
+      <input type="text", name="twitterHandle" id="twitter" placeholder="@examplepal90", required>
       <label>Enter friend's Github handle:</label>
-      <input type="text", name="githubHandle" placeholder="JoeExample", required>
+      <input type="text", name="githubHandle" id="github" placeholder="JoeExample", required>
       <label>Enter friend's Email</label>
-      <input type="text", name="email" placeholder="Forrest@BubbaGump.org", required>
-     </form>
+      <input type="text", name="email" id="email" placeholder="example@example.org", required>
+    </form>
+      <button id="addFriend">please work</button>
 
   <table>
     <thead>
@@ -36,9 +35,9 @@
        </tr>
     </thead>
     <tbody>
-    <tbody>
+    </tbody>
   </table>
-
-
+  <script src="../../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../public/js/main.js"></script>
 </body>
 
