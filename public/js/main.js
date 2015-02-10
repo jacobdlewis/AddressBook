@@ -18,6 +18,7 @@ $(document).ready(function loadPageObjects() {
     Object.keys(res).forEach(function(uuid){
       addRowToTable(uuid, res[uuid]);
     });
+
   });
 
 //show contact form when button is clicked
