@@ -9,9 +9,10 @@
 </head>
 <body>
   <div class="row">
-    <div class="small-2 columns">
+    <div class="small-2 columns gutter">
+      <p>  </p>
     </div>
-    <div class="small-8 columns">
+    <div class="small-8 columns wrapper">
     <h1> My FriendBook </h1>
       <button class="button" id="startAdding">Add a New Contact</button>
         <form class="makeFriends">
@@ -25,9 +26,9 @@
           <input type="text", name="githubHandle" id="github" placeholder="JoeExample", required>
           <label>Enter friend's Email</label>
           <input type="text", name="email" id="email" placeholder="example@example.org", required>
-          <button id="addFriend">please work</button>
+          <button id="addFriend">Submit</button>
         </form>
-        <table>
+        <table class="table">
           <thead>
             <tr>
               <th>Name</th>
@@ -42,10 +43,10 @@
           </tbody>
         </table>
       </div>
-    <div class="small-2 columns">
+    <div class="small-2 columns gutter">
     </div>
+    <p>  </p>
   </div>
-
   <script src="../../bower_components/jquery/dist/jquery.js"></script>
   <script src="../public/js/main.js"></script>
 </body>

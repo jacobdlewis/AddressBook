@@ -2,9 +2,14 @@
 h1 {
   color: lightblue;
   text-align: center;
+}
+.gutter {
+}
+.make_a_friend {
   max-width: 400px;
 }
 
-.make_a_friend {
-  max-width: 400px;
+.wrapper {
+  text-align: center;
+  margin: auto;
 }

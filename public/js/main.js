@@ -9,25 +9,24 @@ var firebaseUrl = "https://myjsaddressbook.firebaseio.com/friends.json";
 var $tbody = $('tbody');
 
 //when page loads, add data from firebase to table
-$(document).ready(function loadPageObjects() {
+$(document).ready(function () {
   console.log("page is loaded");
-
+  //hide the form
   $('.makeFriends').hide();
-
+  //load existing contacts from firebase
   $.get(firebaseUrl, function(res){
     Object.keys(res).forEach(function(uuid){
       addRowToTable(uuid, res[uuid]);
     });
-
   });
-
 //show contact form when button is clicked
 
-$('#startAdding').on('click', function() {
-  console.log("start adding clicked");
+});//end .ready function
+
+function exposeForm() {
   $('.makeFriends').toggle();
-  });
-});
+}
+$('#startAdding').on('click', exposeForm);
 
 //when button is clicked, add friend to row on page
 $('#addFriend').on('click',  function(event) {
@@ -76,7 +75,7 @@ function addRowToTable(uuid, obj){
   var $tr = $('<tr><td>' +
                    obj.name +
                    '</td><td><img src="' +
-                   obj.url +
+                   obj.photoURL +
                    '"></td><td>' +
                    obj.twitter +
                    '</td><td>' +
