@@ -5,8 +5,11 @@ function hello() {
   return 'world';
 }
 
-var firebaseUrl = "https://myjsaddressbook.firebaseio.com/friends.json";
-var $tbody = $('tbody');
+var firebaseUrl = "https://myjsaddressbook.firebaseio.com/friends.json",
+    $tbody      = $('tbody'),
+    rawFbUrl    = "https://myjsaddressbook.firebaseio.com",
+    fb          = new Firebase(rawFbUrl),
+    usersFbUrl  = rawFbUrl + '/users/' + fb.getAuth().uid + '/data';
 
 //when page loads, add data from firebase to table
 $(document).ready(function () {
