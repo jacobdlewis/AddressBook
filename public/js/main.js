@@ -49,7 +49,6 @@ $('#addFriend').on('click',  function(event) {
                    '</td><td>' +
                    email +
                    '</td><td><button id="removeRow">Remove</button><tr>');
-
   //post data to firebase
   var friendToAdd = JSON.stringify({
                                    name: name,
