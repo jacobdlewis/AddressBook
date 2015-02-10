@@ -1,9 +1,10 @@
+
 h1 {
-  color: pink;
-  background-color: lightblue;
+  color: lightblue;
+  text-align: center;
+  max-width: 400px;
 }
 
 .make_a_friend {
   max-width: 400px;
-  margin-left: 50px;
 }

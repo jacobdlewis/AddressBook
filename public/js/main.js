@@ -12,13 +12,20 @@ var $tbody = $('tbody');
 $(document).ready(function loadPageObjects() {
   console.log("page is loaded");
 
+  $('.makeFriends').hide();
+
   $.get(firebaseUrl, function(res){
     Object.keys(res).forEach(function(uuid){
       addRowToTable(uuid, res[uuid]);
     });
   });
 
+//show contact form when button is clicked
 
+$('#startAdding').on('click', function() {
+  console.log("start adding clicked");
+  $('.makeFriends').toggle();
+  });
 });
 
 //when button is clicked, add friend to row on page
@@ -53,6 +60,14 @@ $('#addFriend').on('click',  function(event) {
   $.post(firebaseUrl, friendToAdd, function(res) {
     $tr.attr('data-uuid', res.name);
     $('tbody').append($tr);
+
+  //clear out fields
+  $('#name').val("");
+  $('#photo').val("");
+  $('#twitter').val("");
+  $('#github').val("");
+  $('#email').val("");
+  $('.makeFriends').hide();
   });
 });
 

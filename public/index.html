@@ -8,35 +8,41 @@
 
 </head>
 <body>
-  <h1> My FriendBook </h1>
+  <div class="row">
+    <div class="small-6 columns">
+    <h1> My FriendBook </h1>
+    <button class="button" id="startAdding">Add a New Contact</button>
+      <form class="makeFriends">
+        <label>Enter friend's name:</label>
+        <input type="text", name="friendName" id="name" placeholder="Enter a name", required>
+        <label>Enter URL of friend's photo:</label>
+        <input type="url", name="photoUrl" id="photo" placeholder="URL of photo to add", required>
+        <label>Enter friend's Twitter handle:</label>
+        <input type="text", name="twitterHandle" id="twitter" placeholder="@examplepal90", required>
+        <label>Enter friend's Github handle:</label>
+        <input type="text", name="githubHandle" id="github" placeholder="JoeExample", required>
+        <label>Enter friend's Email</label>
+        <input type="text", name="email" id="email" placeholder="example@example.org", required>
+        <button id="addFriend">please work</button>
+      </form>
+    </div>
+  </div>
+    <div class="small-6 columns">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Twitter</th>
+            <th>Github</th>
+            <th>Email</th>
+           </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
 
-    <form class="make_a_friend">
-      <label>Enter friend's name:</label>
-      <input type="text", name="friendName" id="name" placeholder="Enter a name", required>
-      <label>Enter URL of friend's photo:</label>
-      <input type="text", name="photoUrl" id="photo" placeholder="URL of photo to add", required>
-      <label>Enter friend's Twitter handle:</label>
-      <input type="text", name="twitterHandle" id="twitter" placeholder="@examplepal90", required>
-      <label>Enter friend's Github handle:</label>
-      <input type="text", name="githubHandle" id="github" placeholder="JoeExample", required>
-      <label>Enter friend's Email</label>
-      <input type="text", name="email" id="email" placeholder="example@example.org", required>
-    </form>
-      <button id="addFriend">please work</button>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Photo</th>
-        <th>Twitter</th>
-        <th>Github</th>
-        <th>Email</th>
-       </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
   <script src="../../bower_components/jquery/dist/jquery.js"></script>
   <script src="../public/js/main.js"></script>
 </body>
