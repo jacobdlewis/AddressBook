@@ -9,11 +9,21 @@
 </head>
 <body>
   <div class="row">
-    <div class="small-2 columns gutter">
-      <p>  </p>
-    </div>
-    <div class="small-8 columns wrapper">
-    <h1> My FriendBook </h1>
+
+      <div class="small-10 columns wrapper">
+        <div class="register"></div>
+        <div class="login">
+        <h1>Please Login or Register</h1>
+        <form action="#">
+          <input type="email" name="email" placeholder="123sally@example.com" required="required"/>
+          <input type="password" name="password" placeholder="bobsburgers" required="required"/>
+          <button type="button" class="register">Register</button>
+          <input type="submit" class="button" value="Login"/>
+        </form>
+      </div>
+      <div class="loggedIn hidden">
+      <hr width="800px" text-align="center">
+      <h1> My FriendBook </h1>
       <button class="button" id="startAdding">Add a New Contact</button>
         <form class="makeFriends">
           <label>Enter friend's name:</label>
@@ -43,10 +53,8 @@
           </tbody>
         </table>
       </div>
-    <div class="small-2 columns gutter">
-    </div>
-    <p>  </p>
-  </div>
+   </div>
+  <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
   <script src="../../bower_components/jquery/dist/jquery.js"></script>
   <script src="../public/js/main.js"></script>
 </body>

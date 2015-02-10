@@ -5,8 +5,9 @@ function hello() {
   return 'world';
 }
 
-var firebaseUrl = "https://myjsaddressbook.firebaseio.com/friends.json";
-var $tbody = $('tbody');
+var firebaseUrl   = "https://myjsaddressbook.firebaseio.com/friends.json",
+    $tbody        = $('tbody'),
+    rawFbUrl      = "https://myjsaddressbook.firebaseio.com";
 
 //when page loads, add data from firebase to table
 $(document).ready(function () {
@@ -29,7 +30,7 @@ function exposeForm() {
 $('#startAdding').on('click', exposeForm);
 
 //when button is clicked, add friend to row on page
-$('#addFriend').on('click',  function(event) {
+$('form').submit(function(event) {
   event.preventDefault();
 
   var name     = $('#name').val(),

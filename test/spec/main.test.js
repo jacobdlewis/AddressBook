@@ -23,10 +23,10 @@ describe('addRowToTable', function() {
     $('tr').length.should.equal(2);
   });
 });
-//describe('exposeForm', function() {
-  //it('should expose the form for a user to edit', function () {
-    //$('.makeFriends').attr('style').should.equal("none;");
-    //exposeForm();
-    //$('.makeFriends').attr('style').should.equal("block;");
-  //});
-//});
+describe('exposeForm', function() {
+  it('should expose the form for a user to edit', function () {
+    $('.makeFriends')[0].style.cssText === "display: none;";
+    exposeForm();
+    $('.makeFriends')[0].style.cssText === "display: block;";
+  });
+});
