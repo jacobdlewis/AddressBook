@@ -48,7 +48,7 @@ $('#addFriend').on('click',  function(event) {
                    github +
                    '</td><td>' +
                    email +
-                   '</td><tr>');
+                   '</td><td><button id="removeRow">Remove</button><tr>');
 
   //post data to firebase
   var friendToAdd = JSON.stringify({
@@ -82,8 +82,18 @@ function addRowToTable(uuid, obj){
                    obj.github +
                    '</td><td>' +
                    obj.email +
-                   '</td><tr>');
+                   '</td><td><button id="removeRow">Remove</button><tr>');
+
   $tr.attr('data-uuid', uuid);
   $('tbody').append($tr);
 };
 
+//remove row functionality
+$('tbody').on('click', '#removeRow', function(evt){
+  var $tr = $(evt.target).closest('tr');
+  $tr.remove();
+
+  var uuid = $tr.data('uuid');
+  var url = "https://myjsaddressbook.firebaseio.com/friends/" + uuid + '.json';
+  $.ajax(url, {type: 'DELETE'});
+});
