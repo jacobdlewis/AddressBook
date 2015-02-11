@@ -12,15 +12,15 @@ var firebaseUrl   = "https://myjsaddressbook.firebaseio.com/friends.json",
     usersFbUrl;
 
 $(document).ready(function () {
-  console.log("page is loaded");
   $('.makeFriends').hide();
+  init();
 });
-
+function init(){
 ///////////// LOGIN & AUTH PIECE ///////////////
     //if you're logged in, login elements shouldn't appear
 if (fb.getAuth()) {
   $('.login').remove();
-  $('.app').toggleClass('hidden');
+  $('.app').show();
   //$('.logout').toggleClass('hidden');
 
   usersFbUrl = rawFbUrl + '/users/' + fb.getAuth().uid + '/data/';
@@ -30,6 +30,9 @@ if (fb.getAuth()) {
       addRowToTable(uuid, res[uuid]);
     });
   });
+ } else {
+  $('.logout').hide();
+  $('.app').hide();
  }
     //Register & Login
  $('#registerButton').click(function (event) {
@@ -119,6 +122,7 @@ $('form').submit(function(event) {
                                    github: github,
                                    email: email});
   $.post(usersFbUrl + '/friends/.json', friendToAdd, function(res) {
+    debugger;
     $tr.attr('data-uuid', res.name);
     $('tbody').append($tr);
 
@@ -155,7 +159,7 @@ $('tbody').on('click', '#removeRow', function(evt){
   $tr.remove();
 
   var uuid = $tr.data('uuid');
-  var url = usersFbUrl + uuid + '.json';
+  var url = usersFbUrl + '/friends/' + uuid + '.json';
   $.ajax(url, {type: 'DELETE'});
 });
-
+}
