@@ -7,7 +7,78 @@ function hello() {
 
 var firebaseUrl   = "https://myjsaddressbook.firebaseio.com/friends.json",
     $tbody        = $('tbody'),
-    rawFbUrl      = "https://myjsaddressbook.firebaseio.com";
+    rawFbUrl      = "https://myjsaddressbook.firebaseio.com",
+    fb            = new Firebase(rawFbUrl),
+    usersFbUrl;
+
+
+if (fb.getAuth()) {
+  $('.login').remove();
+  $('.app').toggleClass('hidden');
+
+  usersFbUrl = rawFbUrl + '/users/' + fb.getAuth().uid + '/data';
+
+  $.get(usersFbUrl + '/friends.json', function (res) {
+    Object.keys(res).forEach(function (uuid) {
+      addRowToTable(uuid, res[uuid]);
+    });
+  });
+ }
+
+ $('#registerButton').click(function (event) {
+   event.preventDefault();
+   var $loginForm = $('#loginForm'),
+       email      = $('#signinEmail').val(),
+       pass       = $('#signinPassword').val(),
+       data       = {email: email, password: pass};
+       debugger;
+   registerAndLogin(data, function (err, auth) {
+     if (err) {
+       $('.error').text(err);
+     } else {
+       location.reload(true);
+     }
+   });
+ });
+
+ $('#loginButton').click(function(event){
+   var $loginForm = $('#loginForm'),
+       email      = $('#signinEmail').val(),
+       pass       = $('#signinPassword').val(),
+       data       = {email: email, password: pass};
+
+   event.preventDefault();
+
+   fb.authWithPassword(data, function(err, auth){
+     if (err) {
+       $('.error').text(err);
+     } else {
+       location.reload(true);
+     }
+   });
+ });
+
+$('.logout').click(function () {
+  fb.unauth();
+  location.reload(true);
+})
+
+function registerAndLogin(obj, cb) {
+  fb.createUser(obj, function(err) {
+    if (!err) {
+      fb.authWithPassword(obj, function (err, auth){
+        if (!err) {
+          cb(null, auth);
+        } else {
+          cb(err);
+        }
+      });
+    } else {
+      cb(err);
+    }
+  });
+}
+
 
 //when page loads, add data from firebase to table
 $(document).ready(function () {

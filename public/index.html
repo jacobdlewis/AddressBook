@@ -14,14 +14,14 @@
         <div class="register"></div>
         <div class="login">
         <h1>Please Login or Register</h1>
-        <form action="#">
-          <input type="email" name="email" placeholder="123sally@example.com" required="required"/>
-          <input type="password" name="password" placeholder="bobsburgers" required="required"/>
-          <button type="button" class="register">Register</button>
-          <input type="submit" class="button" value="Login"/>
+        <form id="loginForm" action="#">
+          <input id="signinEmail" type="email" name="email" placeholder="123sally@example.com" required="required"/>
+          <input id="signinPassword" type="password" name="password" placeholder="bobsburgers" required="required"/>
+          <button id="registerButton" type="button" class="register">Register</button>
+          <button id="loginButton" type="button" class="button" class="login">Login </button>
         </form>
       </div>
-      <div class="loggedIn hidden">
+      <div class="loggedIn">
       <hr width="800px" text-align="center">
       <h1> My FriendBook </h1>
       <button class="button" id="startAdding">Add a New Contact</button>
