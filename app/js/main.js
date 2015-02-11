@@ -1,5 +1,9 @@
-/* jshint browser: true, jquery: true */
+/* jshint node: true */
 'use strict'
+
+//var _        = require('lodash'),
+    //$        = require('jquery'),
+    //Firebase = require('firebase');
 
 function hello() {
   return 'world';

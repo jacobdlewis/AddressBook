@@ -1,0 +1,8 @@
+@import './foundation/scss/normalize';
+@import './foundation/scss/foundation';
+
+$coolColor: #123456;
+
+h1 {
+  color: $coolColor;
+}
