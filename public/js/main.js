@@ -11,10 +11,12 @@ var firebaseUrl   = "https://myjsaddressbook.firebaseio.com/friends.json",
     fb            = new Firebase(rawFbUrl),
     usersFbUrl;
 
-
+///////////// LOGIN & AUTH PIECE ///////////////
+    //if you're logged in, login elements shouldn't appear
 if (fb.getAuth()) {
   $('.login').remove();
   $('.app').toggleClass('hidden');
+  //$('.logout').toggleClass('hidden');
 
   usersFbUrl = rawFbUrl + '/users/' + fb.getAuth().uid + '/data';
 
@@ -24,14 +26,13 @@ if (fb.getAuth()) {
     });
   });
  }
-
+    //Register & Login
  $('#registerButton').click(function (event) {
    event.preventDefault();
    var $loginForm = $('#loginForm'),
        email      = $('#signinEmail').val(),
        pass       = $('#signinPassword').val(),
        data       = {email: email, password: pass};
-       debugger;
    registerAndLogin(data, function (err, auth) {
      if (err) {
        $('.error').text(err);

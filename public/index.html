@@ -10,15 +10,18 @@
 <body>
   <div class="row">
 
-      <div class="small-10 columns wrapper">
+      <div class="small-12 columns wrapper">
         <div class="register"></div>
+        <div class="logout">
+          <button id="logoutButton" type="button" class="button" class="logout" >Logout</button>
+        </div>
         <div class="login">
         <h1>Please Login or Register</h1>
         <form id="loginForm" action="#">
           <input id="signinEmail" type="email" name="email" placeholder="123sally@example.com" required="required"/>
           <input id="signinPassword" type="password" name="password" placeholder="bobsburgers" required="required"/>
           <button id="registerButton" type="button" class="register">Register</button>
-          <button id="loginButton" type="button" class="button" class="login">Login </button>
+          <button id="loginButton" type="button" class="button" class="login">Login</button>
         </form>
       </div>
       <div class="loggedIn">
@@ -54,7 +57,6 @@
         </table>
       </div>
    </div>
-  <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
   <script src="../../bower_components/jquery/dist/jquery.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
   <script src="../public/js/main.js"></script>

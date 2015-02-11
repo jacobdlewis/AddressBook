@@ -16,3 +16,7 @@ h1 {
 .hidden {
   display: none;
 }
+table img {
+  max-width: 200px;
+}
+
