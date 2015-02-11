@@ -30,3 +30,4 @@ describe('addRowToTable', function() {
     //$('.makeFriends')[0].style.cssText === "display: block;";
   //});
 //});
+//
