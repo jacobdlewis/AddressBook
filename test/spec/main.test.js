@@ -11,18 +11,18 @@ describe('hello', function () {
     hello().should.equal('world');
   });
 });
-describe('addRowToTable', function() {
-  before(function () {
-      if (window.__karma__) {
-        $('body').append('<table><thead></thead><tbody></tbody></table>');
-      }
-     });
-  it('should add a row to the table', function () {
-    $('tr').length.should.equal(0);
-    addRowToTable('abcdefghijklmnop', { name: 'jack', url: 'google.com', twitter: '@jack', github: 'jacksparrow', email: 'jack@ocean.org' } );
-    $('tr').length.should.equal(2);
-  });
-});
+//describe('addRowToTable', function() {
+  //before(function () {
+      //if (window.__karma__) {
+        //$('body').append('<table><thead></thead><tbody></tbody></table>');
+      //}
+     //});
+  //it('should add a row to the table', function () {
+    //$('tr').length.should.equal(0);
+    //addRowToTable('abcdefghijklmnop', { name: 'jack', url: 'google.com', twitter: '@jack', github: 'jacksparrow', email: 'jack@ocean.org' } );
+    //$('tr').length.should.equal(2);
+  //});
+//});
 //describe('exposeForm', function() {
   //it('should expose the form for a user to edit', function () {
     //$('.makeFriends')[0].style.cssText === "display: none;";
