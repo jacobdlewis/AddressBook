@@ -11,6 +11,11 @@ var firebaseUrl   = "https://myjsaddressbook.firebaseio.com/friends.json",
     fb            = new Firebase(rawFbUrl),
     usersFbUrl;
 
+$(document).ready(function () {
+  console.log("page is loaded");
+  $('.makeFriends').hide();
+});
+
 ///////////// LOGIN & AUTH PIECE ///////////////
     //if you're logged in, login elements shouldn't appear
 if (fb.getAuth()) {
@@ -18,9 +23,9 @@ if (fb.getAuth()) {
   $('.app').toggleClass('hidden');
   //$('.logout').toggleClass('hidden');
 
-  usersFbUrl = rawFbUrl + '/users/' + fb.getAuth().uid + '/data';
+  usersFbUrl = rawFbUrl + '/users/' + fb.getAuth().uid + '/data/';
 
-  $.get(usersFbUrl + '/friends.json', function (res) {
+  $.get(usersFbUrl + 'friends/.json', function (res) {
     Object.keys(res).forEach(function (uuid) {
       addRowToTable(uuid, res[uuid]);
     });
@@ -80,22 +85,6 @@ function registerAndLogin(obj, cb) {
   });
 }
 
-
-//when page loads, add data from firebase to table
-$(document).ready(function () {
-  console.log("page is loaded");
-  //hide the form
-  $('.makeFriends').hide();
-  //load existing contacts from firebase
-  $.get(firebaseUrl, function(res){
-    Object.keys(res).forEach(function(uuid){
-      addRowToTable(uuid, res[uuid]);
-    });
-  });
-//show contact form when button is clicked
-
-});//end .ready function
-
 function exposeForm() {
   $('.makeFriends').toggle();
 }
@@ -129,7 +118,7 @@ $('form').submit(function(event) {
                                    twitter: twitter,
                                    github: github,
                                    email: email});
-  $.post(firebaseUrl, friendToAdd, function(res) {
+  $.post(usersFbUrl + '/friends/.json', friendToAdd, function(res) {
     $tr.attr('data-uuid', res.name);
     $('tbody').append($tr);
 
@@ -166,7 +155,7 @@ $('tbody').on('click', '#removeRow', function(evt){
   $tr.remove();
 
   var uuid = $tr.data('uuid');
-  var url = "https://myjsaddressbook.firebaseio.com/friends/" + uuid + '.json';
+  var url = usersFbUrl + uuid + '.json';
   $.ajax(url, {type: 'DELETE'});
 });
 
