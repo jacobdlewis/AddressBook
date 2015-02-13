@@ -16,9 +16,7 @@ var firebaseUrl   = 'https://myjsaddressbook.firebaseio.com/friends.json',
 
 $(document).ready(function () {
   $('.makeFriends').hide();
-  init();
 });
-function init(){
   if (fb.getAuth()) {
     $('.login').remove();
     $('.app').show();
@@ -170,4 +168,3 @@ $('tbody').on('click', '#removeRow', function(evt){
   var url = usersFbUrl + '/friends/' + uuid + '.json?auth=' + token;
   $.ajax(url, {type: 'DELETE'});
 });
-}
