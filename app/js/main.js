@@ -14,7 +14,8 @@ var firebaseUrl   = "https://myjsaddressbook.firebaseio.com/friends.json",
     rawFbUrl      = "https://myjsaddressbook.firebaseio.com",
     fb            = new Firebase(rawFbUrl),
     token,
-    usersFbUrl;
+    usersFbUrl,
+    usersFb;
 
 $(document).ready(function () {
   $('.makeFriends').hide();
@@ -27,16 +28,22 @@ if (fb.getAuth()) {
   $('.login').remove();
   $('.app').show();
 
-  //$('.logout').toggleClass('hidden');
+  usersFb = fb.child('users/' + fb.getAuth().uid + '/data/friends');
 
+  usersFb.once('value', function(res) {
+    var data = res.val();
+    Object.keys(data).forEach(function(uuid) {
+      addRowToTable(uuid, data[uuid]);
+    });
+  });
   usersFbUrl = rawFbUrl + '/users/' + fb.getAuth().uid + '/data/';
   token         = fb.getAuth().token;
 
-  $.get(usersFbUrl + 'friends/.json?auth=' + token, function (res) {
-    Object.keys(res).forEach(function (uuid) {
-      addRowToTable(uuid, res[uuid]);
-    });
-  });
+  //$.get(usersFbUrl + 'friends/.json?auth=' + token, function (res) {
+    //Object.keys(res).forEach(function (uuid) {
+      //addRowToTable(uuid, res[uuid]);
+    //});
+  //});
  } else {
   $('.logout').hide();
   $('.app').hide();
