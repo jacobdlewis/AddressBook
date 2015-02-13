@@ -1,17 +1,14 @@
 /* jshint node: true */
-'use strict'
-
-//var _        = require('lodash'),
-    //$        = require('jquery'),
-    //Firebase = require('firebase');
+/* jshint jquery: true */
+'use strict';
 
 function hello() {
   return 'world';
 }
 
-var firebaseUrl   = "https://myjsaddressbook.firebaseio.com/friends.json",
+var firebaseUrl   = 'https://myjsaddressbook.firebaseio.com/friends.json',
     $tbody        = $('tbody'),
-    rawFbUrl      = "https://myjsaddressbook.firebaseio.com",
+    rawFbUrl      = 'https://myjsaddressbook.firebaseio.com',
     fb            = new Firebase(rawFbUrl),
     token,
     usersFbUrl,
@@ -22,11 +19,9 @@ $(document).ready(function () {
   init();
 });
 function init(){
-///////////// LOGIN & AUTH PIECE ///////////////
-    //if you're logged in, login elements shouldn't appear
-if (fb.getAuth()) {
-  $('.login').remove();
-  $('.app').show();
+  if (fb.getAuth()) {
+    $('.login').remove();
+    $('.app').show();
 
   usersFb = fb.child('users/' + fb.getAuth().uid + '/data/friends');
 
@@ -84,7 +79,7 @@ if (fb.getAuth()) {
 $('.logout').click(function () {
   fb.unauth();
   location.reload(true);
-})
+});
 
 function registerAndLogin(obj, cb) {
   fb.createUser(obj, function(err) {
@@ -136,16 +131,15 @@ $('form').submit(function(event) {
                                    github: github,
                                    email: email});
   $.post(usersFbUrl + '/friends/.json?auth=' + token, friendToAdd, function(res) {
-    debugger;
     $tr.attr('data-uuid', res.name);
     $('tbody').append($tr);
 
   //clear out fields
-  $('#name').val("");
-  $('#photo').val("");
-  $('#twitter').val("");
-  $('#github').val("");
-  $('#email').val("");
+  $('#name').val('');
+  $('#photo').val('');
+  $('#twitter').val('');
+  $('#github').val('');
+  $('#email').val('');
   $('.makeFriends').hide();
   });
 });
@@ -165,7 +159,7 @@ function addRowToTable(uuid, obj){
 
   $tr.attr('data-uuid', uuid);
   $('tbody').append($tr);
-};
+}
 
 //remove row functionality
 $('tbody').on('click', '#removeRow', function(evt){
